@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34407.89
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "BlazorApp\BlazorApp.csproj", "{477539EA-95B5-4F2D-9722-0D018ED8DBC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp.Client", "BlazorApp.Client\BlazorApp.Client.csproj", "{89ED27A0-F3D2-4925-AB1E-04362976DC8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E46A54AD-4BC2-4E81-9165-4426302ED68C}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		README.md = README.md
+		DockerfileOld.txt = DockerfileOld.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{477539EA-95B5-4F2D-9722-0D018ED8DBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477539EA-95B5-4F2D-9722-0D018ED8DBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477539EA-95B5-4F2D-9722-0D018ED8DBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477539EA-95B5-4F2D-9722-0D018ED8DBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89ED27A0-F3D2-4925-AB1E-04362976DC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89ED27A0-F3D2-4925-AB1E-04362976DC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89ED27A0-F3D2-4925-AB1E-04362976DC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89ED27A0-F3D2-4925-AB1E-04362976DC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1453014-CC0C-4CD8-B709-0867D3F8FEBE}
+	EndGlobalSection
+EndGlobal
