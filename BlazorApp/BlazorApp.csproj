@@ -6,7 +6,6 @@
 		<ContainerRegistry></ContainerRegistry>
 		<ContainerImageName>netdefender/blazor-ssr</ContainerImageName>
 		<ContainerRepository>netdefender/blazor-ssr</ContainerRepository>
-		<ContainerImageTag>1.0.0</ContainerImageTag>
 		<ContainerRuntimeIdentifier>linux-x64</ContainerRuntimeIdentifier>
 	</PropertyGroup>
 
@@ -16,6 +15,16 @@
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.*-* " />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.*-* " />
 		<PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.100" />
+		<PackageReference Include="MinVer" Version="4.3.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
+
+	<Target Name="ContainerTag" AfterTargets="MinVer">
+		<PropertyGroup>
+			<ContainerImageTag>$(MinVerVersion)</ContainerImageTag>
+		</PropertyGroup>
+	</Target>
 
 </Project>
