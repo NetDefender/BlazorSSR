@@ -1,3 +1,6 @@
+# When generated with docker commands there is an error in generated html scoped tags
+# If generated with native dotnet tools the scoped tags are correct
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 8080
