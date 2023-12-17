@@ -1,19 +1,7 @@
 ﻿@page "/"
-@attribute [StreamRendering]
-
 
 <PageTitle>Home</PageTitle>
 
-<FluentButton Loading="@loading" Appearance="Appearance.Accent">@text</FluentButton>
-
 @code {
-    bool loading = true;
-    string text = "Loading";
 
-    protected override async Task OnInitializedAsync()
-    {
-        await Task.Delay(1000);
-        loading = false;
-        text = "Loaded";
-    }
 }

@@ -1,5 +1,6 @@
 ﻿@page "/counter"
 @rendermode InteractiveWebAssembly
+@inject IToastService ToastService
 
 <PageTitle>Counter</PageTitle>
 
@@ -8,6 +9,7 @@
 <p role="status">Current count: <FluentBadge Appearance="Appearance.Neutral">@currentCount</FluentBadge></p>
 
 <FluentButton Appearance="Appearance.Accent" @onclick="IncrementCount">Click me</FluentButton>
+<FluentToastProvider MaxToastCount="3" @rendermode="InteractiveWebAssembly" />
 
 @code {
     private int currentCount = 0;
@@ -15,5 +17,6 @@
     private void IncrementCount()
     {
         currentCount++;
+        ToastService.ShowInfo($"Current count is {currentCount}");
     }
 }

@@ -1,4 +1,5 @@
 ﻿@rendermode InteractiveWebAssembly
+@inject IToastService ToastService
 
 <div class="navmenu">
     <input type="checkbox" id="navmenu-toggle" />
@@ -7,10 +8,18 @@
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
             <FluentNavLink Href="counter" Icon="@(new Icons.Regular.Size20.NumberSymbolSquare())" IconColor="Color.Accent">Counter</FluentNavLink>
             <FluentNavLink Href="weather" Icon="@(new Icons.Regular.Size20.WeatherPartlyCloudyDay())" IconColor="Color.Accent">Weather</FluentNavLink>
+            <FluentNavLink Icon="@(new Icons.Regular.Size20.FoodToast())" OnClick="@Toast">Food Toast</FluentNavLink>
         </FluentNavMenu>
     </nav>
 </div>
 
+<FluentToastProvider MaxToastCount="3" @rendermode="InteractiveWebAssembly" />
+
 @code {
     private bool expanded = true;
+
+    void Toast()
+    {
+        ToastService.ShowInfo("Hello Toast");
+    }
 }

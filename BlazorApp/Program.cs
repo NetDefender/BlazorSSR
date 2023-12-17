@@ -18,6 +18,7 @@ builder.Services.AddDataProtection()
 //.PersistKeysToFileSystem(new System.IO.DirectoryInfo("/var/dpkeys/"));
 
 builder.Services.AddRazorComponents()
+    //.AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddFluentUIComponents();
@@ -42,6 +43,7 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
+    //.AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Counter).Assembly);
 
