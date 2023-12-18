@@ -11,6 +11,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\BlazorApp.Client\BlazorApp.Client.csproj" />
+		<ProjectReference Include="..\Shared\Shared.csproj" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.*-* " />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.*-* " />

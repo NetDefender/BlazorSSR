@@ -1,0 +1,37 @@
+﻿@page "/counter"
+@rendermode InteractiveWebAssembly
+@inject IToastService _toastService
+@inject ApiService _apiService
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: <FluentBadge Appearance="Appearance.Neutral">@_count</FluentBadge></p>
+<p role="status">Random value: <FluentBadge Appearance="Appearance.Neutral">@_random</FluentBadge></p>
+
+<FluentButton Appearance="Appearance.Accent" @onclick="Increment">Increment me</FluentButton>
+<FluentButton Appearance="Appearance.Accent" @onclick="CallApi">Call Api Controller</FluentButton>
+<FluentToastProvider MaxToastCount="3" @rendermode="InteractiveWebAssembly" />
+
+@code {
+    private int _count = 0;
+    private int _random = 0;
+
+    protected override Task OnInitializedAsync()
+    {
+        return Task.CompletedTask;
+    }
+
+    private void Increment()
+    {
+        _count++;
+        _toastService.ShowInfo($"Current count is {_count}");
+    }
+
+    private async Task CallApi()
+    {
+        RandomCounter randomValue = await _apiService.Random();
+        _random = randomValue.Value;
+    }
+}
