@@ -13,7 +13,7 @@ else
         @foreach (Product product in _products)
         {
             <FluentGridItem xs="12" sm="6">
-                <ProductInformation Product="@product"></ProductInformation>
+                <ProductInformation Product="@(JsonSerializer.Serialize(product))"></ProductInformation>
             </FluentGridItem>
         }
     </FluentGrid>
