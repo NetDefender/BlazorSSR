@@ -14,6 +14,8 @@ Run locally:
 
 Push:
 
-`docker login -u netdefender -p <Access Token>`
+```pwsh
+echo "<token>" | docker login --username netdefender --password-stdin
 
-`docker image push netdefender/blazor-ssr:1.0.0`
+docker image push netdefender/blazor-ssr:1.0.X
+```
