@@ -5,10 +5,9 @@
     <input type="checkbox" id="navmenu-toggle" />
     <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
         <FluentNavMenu Id="main-menu" Width="250" Collapsible="true" Title="Navigation menu" @bind-Expanded="expanded">
-            <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
+            <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Products</FluentNavLink>
             <FluentNavLink Href="counter" Icon="@(new Icons.Regular.Size20.NumberSymbolSquare())" IconColor="Color.Accent">Counter</FluentNavLink>
             <FluentNavLink Href="weather" Icon="@(new Icons.Regular.Size20.WeatherPartlyCloudyDay())" IconColor="Color.Accent">Weather</FluentNavLink>
-            <FluentNavLink Icon="@(new Icons.Regular.Size20.FoodToast())" OnClick="@Toast">Food Toast</FluentNavLink>
         </FluentNavMenu>
     </nav>
 </div>
@@ -17,9 +16,4 @@
 
 @code {
     private bool expanded = true;
-
-    void Toast()
-    {
-        ToastService.ShowInfo("Hello Toast");
-    }
 }

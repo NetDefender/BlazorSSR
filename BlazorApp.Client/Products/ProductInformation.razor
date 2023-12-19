@@ -1,0 +1,30 @@
+﻿@rendermode InteractiveWebAssembly
+
+<FluentCard>
+    @if (Product is null)
+    {
+        <FluentProgressRing></FluentProgressRing>
+    }
+    else
+    {
+        <FluentStack Orientation="@Orientation.Vertical" VerticalGap="10">
+                <FluentStack Orientation="@Orientation.Horizontal" HorizontalAlignment="@HorizontalAlignment.Start">
+                    <h3>@Product.Name</h3>
+                    <FluentPersona ImageSize="35px" Initials="EX"
+                                   Status="PresenceStatus.Busy"
+                                   StatusSize="PresenceBadgeSize.Small">
+                    </FluentPersona>
+                </FluentStack>
+
+                <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation"></FluentDivider>
+
+                <FluentStack Orientation="@Orientation.Vertical" VerticalAlignment="@VerticalAlignment.Center" VerticalGap="5">
+                    <p>@Product.Description</p>
+                    <FluentStack Orientation="@Orientation.Horizontal" HorizontalAlignment="@HorizontalAlignment.End">
+                        <FluentLabel Typo="Typography.EmailHeader">@Product.Price.ToString("N2") €</FluentLabel>
+                    <FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())" Appearance="Appearance.Accent" OnClick="@Buy">Buy</FluentButton>
+                    </FluentStack>
+                </FluentStack>
+        </FluentStack>
+    }
+</FluentCard>
