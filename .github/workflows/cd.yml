@@ -45,8 +45,8 @@ jobs:
         app-name: delicate-dael
         service-name: blazor-ssr
         service-instance-type: free
-        service-ports: ''
-        service-routes: ''
+        service-ports: 8080:http
+        service-routes: /:8080
         docker: netdefender/blazor-ssr:1.0.2
     #- name: version
     #  run: |
