@@ -26,16 +26,33 @@ jobs:
     #    echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
     #- name: dotnet-publish
     #  run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
-    - name: install minver-cli
+    - name: minver-cli-install
       run: dotnet tool install --global minver-cli
-    - name: version
+    - name: minver-cli-value
       run: |
-        curl -fsSL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
-        export PATH=$HOME/.koyeb/bin:$PATH
         version=$(minver -v e)
         echo "DEPLOY_VERSION=$(echo $version)" >> $GITHUB_ENV
+    - name: minver-cli-show
+      run: |
         echo ${{ env.DEPLOY_VERSION }}
-        koyeb login --token ${{ secrets.KOYEB }}
-      # koyeb service update delicate-dael/blazor-ssr --docker netdefender/blazor-ssr:${{ env.DEPLOY_VERSION }}
+    - name: koyeb-install
+      uses: koyeb-community/install-koyeb-cli@v2
+      with:
+        api_token: "${{ secrets.KOYEB }}"
+    - name: koyeb-deploy
+      uses: koyeb/action-git-deploy@v1
+      with:
+        app-name: delicate-dael
+        service-name: blazor-ssr
+        docker: netdefender/blazor-ssr:1.0.2
+    #- name: version
+    #  run: |
+    #    curl -fsSL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
+    #    export PATH=$HOME/.koyeb/bin:$PATH
+    #    version=$(minver -v e)
+    #    echo "DEPLOY_VERSION=$(echo $version)" >> $GITHUB_ENV
+    #    echo ${{ env.DEPLOY_VERSION }}
+    #    koyeb login --token ${{ secrets.KOYEB }}
+    # koyeb service update delicate-dael/blazor-ssr --docker netdefender/blazor-ssr:${{ env.DEPLOY_VERSION }}
     
     
