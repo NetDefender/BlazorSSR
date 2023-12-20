@@ -12,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: dotnet-install
       uses: actions/setup-dotnet@v3
       with:
@@ -24,3 +26,5 @@ jobs:
         echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
     - name: dotnet-publish
       run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
+    
+    
