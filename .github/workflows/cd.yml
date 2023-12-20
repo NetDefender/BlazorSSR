@@ -14,17 +14,23 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: dotnet-install
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.x
-    - name: dotnet-restore
-      run: dotnet restore
-    - name: docker-login
-      shell: pwsh
+    #- name: dotnet-install
+    #  uses: actions/setup-dotnet@v3
+    #  with:
+    #    dotnet-version: 8.0.x
+    #- name: dotnet-restore
+    #  run: dotnet restore
+    #- name: docker-login
+    #  shell: pwsh
+    #  run: |
+    #    echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
+    #- name: dotnet-publish
+    #  run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
+    - name: install minver-cli
+      run: dotnet tool install --global minver-cli
+    - name: version
       run: |
-        echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
-    - name: dotnet-publish
-      run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
+        $version=$(minver -v e)
+        echo $version
     
     
