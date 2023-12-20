@@ -30,7 +30,7 @@ jobs:
       run: dotnet tool install --global minver-cli
     - name: version
       run: |
-        $version=$(minver -v e)
+        version=$(minver -v e)
         echo $version
     
     
