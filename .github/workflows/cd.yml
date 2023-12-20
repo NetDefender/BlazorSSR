@@ -44,6 +44,7 @@ jobs:
       with:
         app-name: delicate-dael
         service-name: blazor-ssr
+        service-instance-type: free
         docker: netdefender/blazor-ssr:1.0.2
     #- name: version
     #  run: |
