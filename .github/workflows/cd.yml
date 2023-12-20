@@ -24,3 +24,5 @@ jobs:
       shell: pwsh
       run: |
         echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
+    - name: publish
+      run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
