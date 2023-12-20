@@ -33,6 +33,9 @@ jobs:
         curl -fsSL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
         export PATH=$HOME/.koyeb/bin:$PATH
         version=$(minver -v e)
-        echo $version
+        echo "DEPLOY_VERSION=$(echo $version)" >> $GITHUB_ENV
+        echo ${{ env.DEPLOY_VERSION }}
+        koyeb login --token ${{ secrets.KOYEB }}
+      # koyeb service update delicate-dael/blazor-ssr --docker netdefender/blazor-ssr:${{ env.DEPLOY_VERSION }}
     
     
