@@ -14,18 +14,18 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    #- name: dotnet-install
-    #  uses: actions/setup-dotnet@v3
-    #  with:
-    #    dotnet-version: 8.0.x
-    #- name: dotnet-restore
-    #  run: dotnet restore
-    #- name: docker-login
-    #  shell: pwsh
-    #  run: |
-    #    echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
-    #- name: dotnet-publish
-    #  run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
+    - name: dotnet-install
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+    - name: dotnet-restore
+      run: dotnet restore
+    - name: docker-login
+      shell: pwsh
+      run: |
+        echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username netdefender --password-stdin
+    - name: dotnet-publish
+      run: dotnet publish BlazorApp/BlazorApp.csproj -p:PublishProfile=DefaultContainer -c Release -p:ContainerRegistry=docker.io
     - name: minver-cli-install
       run: dotnet tool install --global minver-cli
     - name: minver-cli-value
@@ -47,15 +47,4 @@ jobs:
         service-instance-type: free
         service-ports: 8080:http
         service-routes: /:8080
-        docker: netdefender/blazor-ssr:1.0.2
-    #- name: version
-    #  run: |
-    #    curl -fsSL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
-    #    export PATH=$HOME/.koyeb/bin:$PATH
-    #    version=$(minver -v e)
-    #    echo "DEPLOY_VERSION=$(echo $version)" >> $GITHUB_ENV
-    #    echo ${{ env.DEPLOY_VERSION }}
-    #    koyeb login --token ${{ secrets.KOYEB }}
-    # koyeb service update delicate-dael/blazor-ssr --docker netdefender/blazor-ssr:${{ env.DEPLOY_VERSION }}
-    
-    
+        docker: netdefender/blazor-ssr:${{ env.DEPLOY_VERSION }}
