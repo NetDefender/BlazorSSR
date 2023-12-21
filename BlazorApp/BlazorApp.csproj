@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://*:80/;http://*:8080/" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://*:8080/" />
 	</ItemGroup>
 
 	<PropertyGroup>
